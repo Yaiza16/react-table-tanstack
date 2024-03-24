@@ -12,6 +12,10 @@ export const StatusCell = ({ getValue, row, column, table }) => {
         {name}
       </MenuButton>
       <MenuList>
+        <MenuItem onClick={() => updateData(row.index, column.id, null)}>
+          <ColorIcon color='red.400' mr={3} />
+          None
+        </MenuItem>
         {STATUSES.map((status) => (
           <MenuItem key={status.id} onClick={() => updateData(row.index, column.id, status)}>
             <ColorIcon color={status.color} mr={3} />
