@@ -35,9 +35,15 @@ const TaskTable = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     columnResizeMode: 'onChange',
+    // * The meta object is passed to the cell renderer. It contains the updateData function that can be used to update the data.
+    meta: {
+      updateData: (rowIndex, columnId, value) =>
+        setData((prevData) => prevData.map((row, index) => (index === rowIndex ? { ...row, [columnId]: value } : row))),
+    },
   });
 
   console.log(table.getHeaderGroups());
+  console.log(table.getRowModel().rows);
   return (
     <Box className='table' w={table.getTotalSize()}>
       {table.getHeaderGroups().map((headerGroup) => (
