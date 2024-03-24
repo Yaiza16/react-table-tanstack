@@ -4,6 +4,7 @@ import DATA from '../data';
 import { useState } from 'react';
 import { EditableCell } from './EditableCell';
 import { StatusCell } from './StatusCell';
+import { DateCell } from './DateCell';
 
 const columns = [
   {
@@ -20,12 +21,13 @@ const columns = [
   {
     accessorKey: 'due',
     Header: 'Due',
-    cell: (props) => <p>{props.getValue()?.toLocaleTimeString()}</p>,
+    cell: DateCell,
   },
   {
     accessorKey: 'notes',
     Header: 'Notes',
-    cell: (props) => <p>{props.getValue()}</p>,
+    size: 225,
+    cell: EditableCell,
   },
 ];
 
